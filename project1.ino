@@ -1,3 +1,5 @@
+// Good overall, seems to be missing the "knownDistance". Also the unit choice inch / cm
+
 #include "rgb_lcd.h"
 rgb_lcd lcd;
 
@@ -40,8 +42,20 @@ double average (uint16_t n, uint8_t z) {
     value = pulseIn(z,HIGH);
     total += value;
   }
-  return x = total / n;
+  return x = total / n;  // If you are doing the calculation in the return statement you don't need the 'x='
+
+  /* Use either:
+  x = total / n;
+  return x;
+  
+  Or:
+
+  return total / n;
+  
+  */
 }
+
+// In these functions it would be better to use meaningful names rather 'a' and 'b'
 
 double calibration(uint8_t a, double b) {
   return a / b;
